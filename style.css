@@ -1,0 +1,22 @@
+.pixel {
+    width: 10px;
+    height: 10px;
+    border: 1px solid red;
+    margin: 2px;
+}
+
+.rowcontainers {
+    display: flex;
+    
+}
+
+.filled {
+    background-color: red;
+}
+
+#content {
+    display: flex;
+    flex-direction: column;
+}
+
+
