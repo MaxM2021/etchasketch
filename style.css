@@ -1,8 +1,13 @@
+body {
+    box-sizing: border-box;
+}
+
 .pixel {
+    box-sizing: border-box;
     width: 10px;
     height: 10px;
     border: 1px solid red;
-    margin: 2px;
+    margin: 0;
 }
 
 .rowcontainers {

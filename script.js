@@ -3,7 +3,6 @@
 // no coordinates necessary.
 //
 
-const content = document.querySelector('#content');
 
 function createDivs(rows, columns) {
     for (i = 0; i < rows; i++) {
@@ -20,19 +19,24 @@ function createDivs(rows, columns) {
             row.appendChild(pixel);
         };
     });
-};
-
-createDivs(16, 16);
-
-let pixels = document.querySelectorAll('.pixel');
-const rowDivs = document.querySelectorAll('.rowcontainers');
-
+    //Assigning the variables again for deletion and recreation
+    pixels = document.querySelectorAll('.pixel');
+    rowDivs = document.querySelectorAll('.rowcontainers');
     pixels.forEach((pixel) => {
          pixel.addEventListener('mouseover', () => pixel.classList.add('filled'));
 });
+};
 
+//elements
+const content = document.querySelector('#content');
+let pixels = document.querySelectorAll('.pixel');
+let rowDivs = document.querySelectorAll('.rowcontainers');
 
+//Buttons and Input
 const reset = document.querySelector('#reset');
+const regenerate = document.querySelector('#regenerate');
+const rows = document.querySelector('#rows');
+const columns = document.querySelector('#columns');
 
 reset.addEventListener('click', () => {
     pixels.forEach((pixel) => {
@@ -40,11 +44,8 @@ reset.addEventListener('click', () => {
     });
 });
 
-const regenerate = document.querySelector('#regenerate');
-const rows = document.querySelector('#rows');
-const columns = document.querySelector('#columns');
-
 regenerate.addEventListener('click', () => {
+
     //remove all divs
     pixels.forEach((pixel) => {
         pixel.remove();
@@ -54,8 +55,10 @@ regenerate.addEventListener('click', () => {
     });
     //recreate divs with input parameters
     createDivs(rows.value, columns.value);
-    pixels = document.querySelectorAll('.pixel');
-    pixels.forEach((pixel) => {
-         pixel.addEventListener('mouseover', () => pixel.classList.add('filled'));
 });
-});
+
+createDivs(16, 16);
+
+
+
+
