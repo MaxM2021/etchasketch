@@ -1,27 +1,44 @@
 body {
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .pixel {
     box-sizing: border-box;
-    width: 10px;
-    height: 10px;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     margin: 0;
+    padding: 0;
+    flex: auto;
 }
 
 .rowcontainers {
     display: flex;
+    flex: auto;
+    margin: 0;
+    padding: 0;
     
 }
 
 .filled {
-    background-color: red;
 }
 
 #content {
     display: flex;
+    width: 500px;
+    height: 500px;
     flex-direction: column;
+    box-shadow: 0px 0px 7px #4f4f4f;
 }
 
+#buttons {
+    width: 700px;
+    margin: 15px
+}
+
+.pressed {
+   background-color: black;
+   color: pink; 
+}
 
