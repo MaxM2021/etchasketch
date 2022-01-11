@@ -6,8 +6,8 @@
 //random color option
 
 
-function createDivs(rows, columns) {
-    for (i = 0; i < rows; i++) {
+function createDivs(dimension) {
+    for (i = 0; i < dimension; i++) {
          let rowContainers = document.createElement('div');
         rowContainers.classList.add('rowcontainers');
         rowContainers.setAttribute('draggable', 'false');
@@ -16,7 +16,7 @@ function createDivs(rows, columns) {
     };
     rowContainers = document.querySelectorAll('.rowcontainers');
     rowContainers.forEach((row) => {
-        for (i = 0; i < columns; i++) {
+        for (i = 0; i < dimension; i++) {
             let pixel = document.createElement('div');
             pixel.classList.add('pixel');
             pixel.setAttribute('draggable', 'false');
@@ -38,7 +38,7 @@ function createDivs(rows, columns) {
                     pixel.style.backgroundColor = randomColor();
                     pixel.classList.add('filled');
                 } else {
-                    pixel.style.backgroundColor = 'red';
+                    pixel.style.backgroundColor = colorPicker.value;
                     pixel.classList.add('filled');
                 };
             }
@@ -53,7 +53,7 @@ function createDivs(rows, columns) {
                 pixel.style.backgroundColor = randomColor();
                 pixel.classList.add('filled');
             } else {
-                pixel.style.backgroundColor = 'red';
+                pixel.style.backgroundColor = colorPicker.value;
                 pixel.classList.add('filled');
             };
         });
@@ -74,17 +74,17 @@ let rowDivs = document.querySelectorAll('.rowcontainers');
 const reset = document.querySelector('#reset');
 const rainbowButton = document.querySelector('#rainbow');
 const eraserButton = document.querySelector('#eraser');
+const colorPicker = document.querySelector('#colorpicker');
 let   rainbowToggle = false;
 let   eraserToggle = false;
 const regenerate = document.querySelector('#regenerate');
-const rows = document.querySelector('#rows');
-const columns = document.querySelector('#columns');
+const dimensions = document.querySelector('#dimensions');
 
 reset.addEventListener('click', () => {
     pixels.forEach((pixel) => {
         pixel.classList.remove('filled');
+        pixel.style.backgroundColor = '#FFFFFF';
     });
-    rainbowToggle = false;
 });
 
 rainbowButton.addEventListener('click', () => {
@@ -106,10 +106,10 @@ regenerate.addEventListener('click', () => {
         container.remove();
     });
     //recreate divs with input parameters
-    createDivs(rows.value, columns.value);
+    createDivs(dimensions.value);
 });
 
-createDivs(16, 16);
+createDivs(16);
 
 
 
