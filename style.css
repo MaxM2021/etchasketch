@@ -4,6 +4,9 @@ body {
     flex-direction: column;
     align-items: center;
     font-family: Helvetica, sans-serif;
+    color: white;
+    background-image: url("debut_dark.png");
+    /* background-repeat: repeat; */
 }
 
 .pixel {
@@ -31,15 +34,70 @@ body {
     height: 500px;
     flex-direction: column;
     box-shadow: 0px 0px 7px #4f4f4f;
+    background-color: #ffffff;
 }
 
 #buttons {
     width: 700px;
-    margin: 15px
+    margin: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 7px;
+}
+
+#buttons button, #colorpicker {
+    padding: 5px;
+    background-color: #353535;
+    color: white;
+    border: 1px solid #353535;
+    box-shadow: 0px 0px 2px;
+    border-radius: 3px;
+    font-weight: 700;
+}
+
+#colorpicker {
+    padding: 0;
+}
+
+#buttons button:hover, #colorpicker:hover {
+    border: 1px solid;
+    border-color: #fcba03 !important;
 }
 
 .pressed {
-   background-color: black;
-   color: pink; 
+   animation: colorfade .25s ease-in-out;
+   animation-fill-mode: forwards;
+   background-color: #fcba03;
+   border-color: #fcba03;
 }
 
+.singlepress {
+    animation: colorcycle .5s ease-in-out;
+    animation-fill-mode: forwards;
+   border-color: #fcba03;
+}
+
+@keyframes colorfade {
+    0% { background-color: #353535;
+         border-color: #353535; 
+       }
+    100% {background-color: #fcba03;
+          border-color: #fcba03; 
+         }
+}
+
+@keyframes colorcycle {
+    0% {
+    background-color: #353535;
+    border-color: #353535;
+    }
+    50% {
+    background-color: #fcba03;
+    border-color: #fcba03; 
+    }
+    100% {
+    background-color: #353535;
+    border-color: #353535;
+    }
+}

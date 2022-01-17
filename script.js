@@ -65,6 +65,11 @@ function randomColor() {
     return '#' + n.slice(0,6);
 };
 
+function removeAnimation(e) {
+    console.log(e);
+    this.classList.remove('singlepress');
+};
+
 //elements
 const content = document.querySelector('#content');
 let pixels = document.querySelectorAll('.pixel');
@@ -80,12 +85,16 @@ let   eraserToggle = false;
 const regenerate = document.querySelector('#regenerate');
 const dimensions = document.querySelector('#dimensions');
 
-reset.addEventListener('click', () => {
+reset.addEventListener('click', (e) => {
     pixels.forEach((pixel) => {
         pixel.classList.remove('filled');
         pixel.style.backgroundColor = '#FFFFFF';
     });
+    reset.classList.add('singlepress');
+    console.log(e);
 });
+
+reset.addEventListener('animationend', removeAnimation);
 
 rainbowButton.addEventListener('click', () => {
     rainbowToggle = !rainbowToggle;
@@ -107,7 +116,13 @@ regenerate.addEventListener('click', () => {
     });
     //recreate divs with input parameters
     createDivs(dimensions.value);
+
+    regenerate.classList.add('singlepress');
 });
+
+regenerate.addEventListener('animationend', removeAnimation);
+
+
 
 createDivs(16);
 
